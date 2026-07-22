@@ -165,41 +165,97 @@ if (musicBtn) {
 
 }
 
-// ================================
-// PREMIUM CHAPTER 8 TYPEWRITER
-// ================================
+// ======================================
+// PREMIUM LOVE LETTER
+// ======================================
 
-const originalLetter = document.getElementById("letterText")?.innerHTML;
+const envelope = document.getElementById("openLetter");
+const letterBox = document.getElementById("letterBox");
+const letterText = document.getElementById("letterText");
 
-function startLetterTyping(){
+const fullLetter = letterText.innerText;
 
-    const letter = document.getElementById("letterText");
+letterText.innerHTML = "";
 
-    if(!letter || !originalLetter) return;
-
-    letter.innerHTML = "";
+function typeLetter(){
 
     let i = 0;
 
     function type(){
 
-        if(i < originalLetter.length){
+        if(i < fullLetter.length){
 
-            letter.innerHTML += originalLetter.charAt(i) + '<span class="cursor">|</span>';
+            letterText.innerHTML =
+                fullLetter.substring(0,i+1) +
+                '<span class="cursor">|</span>';
 
             i++;
 
-            setTimeout(type,30);
+            createHeart();
+
+            setTimeout(type,35);
 
         }else{
 
-            letter.innerHTML = originalLetter + '<span class="cursor">|</span>';
+            letterText.innerHTML =
+                fullLetter +
+                '<span class="cursor">|</span>';
 
         }
 
     }
 
     type();
+
+}
+
+if(envelope){
+
+    envelope.addEventListener("click",()=>{
+
+        envelope.style.transform="scale(0)";
+        envelope.style.opacity="0";
+
+        setTimeout(()=>{
+
+            envelope.parentElement.style.display="none";
+
+            letterBox.style.display="block";
+
+            setTimeout(()=>{
+
+                letterBox.classList.add("show");
+
+                typeLetter();
+
+            },200);
+
+        },500);
+
+    });
+
+}
+
+
+// Floating hearts while typing
+
+function createHeart(){
+
+    const heart=document.createElement("div");
+
+    heart.innerHTML="❤️";
+
+    heart.className="typingHeart";
+
+    heart.style.left=(40+Math.random()*20)+"vw";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+
+        heart.remove();
+
+    },2500);
 
 }
 // ================================
