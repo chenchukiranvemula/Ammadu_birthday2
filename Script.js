@@ -483,3 +483,52 @@ love.remove();
 },6000);
 
 },7000);
+// ==============================
+// CARD HEART EFFECT
+// ==============================
+
+document.querySelectorAll(".card,.timeBox,.gift,.photo").forEach(box=>{
+
+box.addEventListener("click",()=>{
+
+for(let i=0;i<8;i++){
+
+const heart=document.createElement("div");
+
+heart.innerHTML=Math.random()>0.5?"❤️":"✨";
+
+heart.style.position="fixed";
+
+const rect=box.getBoundingClientRect();
+
+heart.style.left=(rect.left+rect.width/2)+"px";
+heart.style.top=(rect.top+rect.height/2)+"px";
+
+heart.style.pointerEvents="none";
+heart.style.fontSize="22px";
+heart.style.zIndex="9999";
+
+heart.animate([
+{
+transform:"translate(0,0) scale(.5)",
+opacity:1
+},
+{
+transform:`translate(${Math.random()*160-80}px,${Math.random()*160-80}px) scale(1.8)`,
+opacity:0
+}
+],{
+duration:900
+});
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},900);
+
+}
+
+});
+
+});
