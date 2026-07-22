@@ -71,6 +71,7 @@ nextBtns.forEach(btn => {
         }
 
         chapters[currentChapter].classList.add("active");
+        
 
         // Entering Chapter 8
         if(currentChapter === 7){
@@ -81,6 +82,10 @@ nextBtns.forEach(btn => {
         if(currentChapter === 9){
             startCelebration();
         }
+        // Leaving Chapter 10
+if (currentChapter === 9) {
+    stopCelebration();
+}
 
     });
 
@@ -309,37 +314,39 @@ function createTouchEffect(e){
 // CHAPTER 10 CELEBRATION
 // ================================
 
-function startCelebration(){
+let celebrationInterval;
 
-const icons=["🎈","🎊","🎉","✨","❤️","🌸"];
+function startCelebration() {
 
-for(let i=0;i<80;i++){
+    const icons = ["🎈","🎊","🎉","✨","❤️","🌸"];
 
-setTimeout(()=>{
+    celebrationInterval = setInterval(() => {
 
-const item=document.createElement("div");
+        const item = document.createElement("div");
 
-item.className="partyItem";
+        item.className = "partyItem";
 
-item.innerHTML=icons[Math.floor(Math.random()*icons.length)];
+        item.innerHTML = icons[Math.floor(Math.random() * icons.length)];
 
-item.style.left=Math.random()*100+"vw";
+        item.style.left = Math.random() * 100 + "vw";
+        item.style.fontSize = (20 + Math.random() * 30) + "px";
 
-item.style.fontSize=(20+Math.random()*30)+"px";
+        document.body.appendChild(item);
 
-document.body.appendChild(item);
+        setTimeout(() => {
+            item.remove();
+        }, 4000);
 
-setTimeout(()=>{
-item.remove();
-},4000);
+    }, 120);
 
-},i*80);
-
+    createFireworks();
 }
 
-createFireworks();
+function stopCelebration() {
+    clearInterval(celebrationInterval);
 
-                      }
+    document.querySelectorAll(".partyItem").forEach(e => e.remove());
+}
 // ================================
 // PREMIUM BACKGROUND EFFECTS
 // ================================
