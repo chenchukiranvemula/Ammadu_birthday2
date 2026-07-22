@@ -90,30 +90,92 @@ if (currentChapter === 9) {
     });
 
 });
-// ================================
-// GIFTS
-// ================================
+// ===============================
+// PREMIUM GIFT OPENING
+// ===============================
 
+const gifts = document.querySelectorAll(".gift");
 const giftMessage = document.getElementById("giftMessage");
 
-document.querySelectorAll(".gift").forEach(gift => {
+gifts.forEach(gift => {
 
     gift.addEventListener("click", () => {
 
-        giftMessage.innerHTML = gift.dataset.message;
+        // Open Gift
+        gift.classList.add("open");
 
-        gift.style.transform = "scale(1.15) rotate(10deg)";
+        // Typewriter Message
+        const message = gift.dataset.message;
 
-        setTimeout(() => {
+        giftMessage.innerHTML = "";
 
-            gift.style.transform = "";
+        let i = 0;
 
-        },400);
+        function typeGift() {
+
+            if (i < message.length) {
+
+                giftMessage.innerHTML += message.charAt(i);
+
+                i++;
+
+                setTimeout(typeGift, 40);
+
+            }
+
+        }
+
+        typeGift();
+
+        // Floating Hearts
+        for (let j = 0; j < 20; j++) {
+
+            setTimeout(() => {
+
+                const heart = document.createElement("div");
+
+                heart.innerHTML = Math.random() > 0.5 ? "❤️" : "✨";
+
+                heart.style.position = "fixed";
+
+                const rect = gift.getBoundingClientRect();
+
+                heart.style.left = (rect.left + rect.width / 2) + "px";
+                heart.style.top = (rect.top + rect.height / 2) + "px";
+
+                heart.style.fontSize = (20 + Math.random() * 15) + "px";
+
+                heart.style.pointerEvents = "none";
+
+                heart.style.zIndex = "9999";
+
+                document.body.appendChild(heart);
+
+                heart.animate([
+                    {
+                        transform: "translate(0,0) scale(.5)",
+                        opacity: 1
+                    },
+                    {
+                        transform: `translate(${Math.random()*200-100}px,-250px) scale(1.8)`,
+                        opacity: 0
+                    }
+                ], {
+                    duration: 1800,
+                    easing: "ease-out"
+                });
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 1800);
+
+            }, j * 80);
+
+        }
 
     });
 
 });
-
 // ================================
 // CAKE
 // ================================
