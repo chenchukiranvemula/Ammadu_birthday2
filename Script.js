@@ -265,28 +265,37 @@ location.reload();
 
            }
 // ================================
-// TOUCH BUBBLE EFFECT
+// TOUCH EFFECTS (Bubbles + Hearts)
 // ================================
 
-document.addEventListener("click", function(e){
+document.addEventListener("click", createTouchEffect);
+document.addEventListener("touchstart", (e) => {
+    createTouchEffect(e.touches[0]);
+});
 
-    for(let i=0;i<8;i++){
+function createTouchEffect(e){
+
+    const x = e.clientX;
+    const y = e.clientY;
+
+    for(let i=0;i<10;i++){
 
         const bubble=document.createElement("div");
+        bubble.className="bubble";
+        bubble.style.left=x+"px";
+        bubble.style.top=y+"px";
 
-        bubble.className="touchBubble";
+        bubble.style.setProperty("--x",(Math.random()*200-100)+"px");
+        bubble.style.setProperty("--y",(Math.random()*200-100)+"px");
 
         bubble.innerHTML=Math.random()>0.5?"❤️":"✨";
 
-        bubble.style.left=e.clientX+"px";
-        bubble.style.top=e.clientY+"px";
-
-        bubble.style.setProperty("--x",(Math.random()*200-100)+"px");
-        bubble.style.setProperty("--y",(-80-Math.random()*120)+"px");
-
         document.body.appendChild(bubble);
 
-        setTimeout(()=>bubble.remove(),1500);
+        setTimeout(()=>{
+            bubble.remove();
+        },1500);
+
     }
 
-});
+}
