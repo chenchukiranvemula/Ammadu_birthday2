@@ -299,3 +299,38 @@ function createTouchEffect(e){
     }
 
 }
+// ================================
+// CHAPTER 10 CELEBRATION
+// ================================
+
+function startCelebration(){
+
+const icons=["🎈","🎊","🎉","✨","❤️","🌸"];
+
+for(let i=0;i<80;i++){
+
+setTimeout(()=>{
+
+const item=document.createElement("div");
+
+item.className="partyItem";
+
+item.innerHTML=icons[Math.floor(Math.random()*icons.length)];
+
+item.style.left=Math.random()*100+"vw";
+
+item.style.fontSize=(20+Math.random()*30)+"px";
+
+document.body.appendChild(item);
+
+setTimeout(()=>{
+item.remove();
+},4000);
+
+},i*80);
+
+}
+
+createFireworks();
+
+                      }
