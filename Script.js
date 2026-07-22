@@ -679,19 +679,76 @@ startTimer();
 
 function unlockLove(){
 
-roseArea.innerHTML=`
+unlockBtn.disabled=true;
 
-<h2>🌹 16 September 2024 ❤️</h2>
+const rose=document.createElement("div");
 
-<p>The day that became one of the most beautiful memories of our story.</p>
+rose.className="unlockRose";
 
+rose.innerHTML="🌹";
+
+document.body.appendChild(rose);
+
+const text=document.createElement("div");
+
+text.className="unlockText";
+
+text.innerHTML=`
+🌹<br>
+16 September 2024 ❤️<br>
+Our First Kiss Day
 `;
 
-unlockBtn.disabled=true;
+document.body.appendChild(text);
+
+for(let i=0;i<120;i++){
 
 setTimeout(()=>{
 
-lockScreen.style.transition="1.5s";
+const petal=document.createElement("div");
+
+petal.className="petal";
+
+petal.innerHTML=Math.random()>0.5?"🌸":"❤️";
+
+petal.style.left=Math.random()*100+"vw";
+
+petal.style.animationDuration=
+(4+Math.random()*4)+"s";
+
+document.body.appendChild(petal);
+
+setTimeout(()=>petal.remove(),8000);
+
+},i*40);
+
+}
+
+for(let i=0;i<80;i++){
+
+setTimeout(()=>{
+
+const star=document.createElement("div");
+
+star.className="sparkle";
+
+star.innerHTML="✨";
+
+star.style.left=Math.random()*100+"vw";
+
+star.style.top=Math.random()*100+"vh";
+
+document.body.appendChild(star);
+
+setTimeout(()=>star.remove(),1500);
+
+},i*25);
+
+}
+
+setTimeout(()=>{
+
+lockScreen.style.transition="2s";
 
 lockScreen.style.opacity="0";
 
@@ -699,44 +756,12 @@ setTimeout(()=>{
 
 lockScreen.style.display="none";
 
-},1500);
+rose.remove();
 
-},3000);
+text.remove();
 
-}
+},2000);
 
-function startTimer(){
+},5500);
 
-locked=true;
-
-unlockBtn.disabled=true;
-
-let sec=60;
-
-const interval=setInterval(()=>{
-
-timerArea.innerHTML="⏳ Try again in "+sec+" seconds";
-
-sec--;
-
-if(sec<0){
-
-clearInterval(interval);
-
-locked=false;
-
-attempts=5;
-
-chanceCount.innerHTML=5;
-
-timerArea.innerHTML="";
-
-roseArea.innerHTML="";
-
-unlockBtn.disabled=false;
-
-}
-
-},1000);
-
-        }
+           }
