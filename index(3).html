@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Madhu Priya ❤️</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+
+    <!-- Background Audio -->
+    <audio id="bgMusic" loop>
+        <source src="Birthdaysong.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="chapter9Song" preload="auto">
+        <source src="Ammadu2.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- ==================== NEW PASSWORD SCREEN ==================== -->
+    <section id="passwordScreen">
+        <div class="night-container">
+            
+            <!-- Left Side: 3D Book -->
+            <div class="book-container">
+                <div class="book">
+                    <div class="book-cover">
+                        <img src="ghibli-photo.jpg" alt="Ghibli Art Memory">
+                        <div class="spiral"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Password -->
+            <div class="password-box">
+                <h1>🔐 Unlock Our Story</h1>
+                <p>Enter her birthday (DDMMYYYY)</p>
+                <input type="text" id="passwordInput" placeholder="03062025" maxlength="8">
+                <button id="unlockBtn">Open the Book ❤️</button>
+                <p id="errorMsg"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ORIGINAL CONTENT STARTS HERE ==================== -->
+    <!-- Welcome Screen -->
+    <section id="welcome" style="display: none;">
+       <!-- NEW PASSWORD SCREEN -->
+<section id="passwordScreen" style="display:flex; position:fixed; inset:0; z-index:9999; background:#0a001f;">
+    <div class="night-container" style="display:flex; width:100%; height:100%; align-items:center; justify-content:center; gap:80px; flex-wrap:wrap;">
+        
+        <!-- LEFT: 3D Book -->
+        <div class="book-container">
+            <div class="book">
+                <div class="book-cover">
+                    <img src="ghibli-photo.jpg" alt="Ghibli Memory" style="width:100%;height:100%;object-fit:cover;">
+                    <div class="spiral"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT: Password -->
+        <div class="password-box" style="text-align:center; color:white;">
+            <h1 style="font-size:2.8rem;">🔐 Our Secret Memory</h1>
+            <p style="margin:20px 0; font-size:1.2rem;">Enter her birthday (DDMMYYYY)</p>
+            <input type="text" id="passwordInput" placeholder="17072009" maxlength="8" 
+                   style="padding:15px; font-size:1.3rem; width:280px; text-align:center; border-radius:12px; border:none;">
+            <br><br>
+            <button id="unlockBtn" style="padding:16px 50px; font-size:1.3rem;">Open the Book ❤️</button>
+            <p id="errorMsg" style="color:#ff6b6b; margin-top:15px; min-height:24px;"></p>
+        </div>
+        
+        <div class="welcome-box">
+            <h1>🎂 Happy 17th Birthday</h1>
+            <h2>Madhu Priya ❤️</h2>
+            <p>Today isn't just another day...<br>It's the day the most beautiful girl came into this world.</p>
+            <button id="startBtn">Start Our Journey ❤️</button>
+        </div>
+    </section>
+
+    <!-- Main Website -->
+
+<div id="website">
+
+<!-- Chapter 1 -->
+
+<section class="chapter">
+
+<h1>🌸 Chapter 1</h1>
+
+<h2>Welcome My Love ❤️</h2>
+
+<p>
+
+Every second with you is precious.
+
+Today is all about celebrating YOU.
+
+Happy Birthday Princess ❤️
+
+</p>
+
+<button class="nextBtn">
+
+Next ➜
+
+</button>
+
+</section>
+<!-- Chapter 2 -->
+
+<section class="chapter">
+
+<h1>💕 Chapter 2</h1>
+
+<h2>Reasons I Love You ❤️</h2>
+
+<div class="cards">
+
+<div class="card">
+🥰<br><br>
+Your Beautiful Smile
+</div>
+
+<div class="card">
+🌸<br><br>
+Your Caring Nature
+</div>
+
+<div class="card">
+💖<br><br>
+Your Kind Heart
+</div>
+
+<div class="card">
+😍<br><br>
+Everything About You
+</div>
+
+</div>
+
+<button class="nextBtn">
+Next ➜
+</button>
+
+</section>
+    <!-- Chapter 3 -->
+
+<section class="chapter">
+
+<h1>🌹 Chapter 3</h1>
+
+<h2>Our Journey ❤️</h2>
+
+<div class="timeline">
+
+<div class="timeBox">
+🌸
+<p>The day we met became one of my favorite memories.</p>
+</div>
+
+<div class="timeBox">
+💖
+<p>Every conversation brought us closer.</p>
+</div>
+
+<div class="timeBox">
+🥰
+<p>You became my happiness every single day.</p>
+</div>
+
+<div class="timeBox">
+❤️
+<p>Today I just want to see you smiling.</p>
+</div>
+
+</div>
+
+<button class="nextBtn">
+Next ➜
+</button>
+
+</section>
+
+<!-- Chapter 4 -->
+
+<section class="chapter">
+
+<h1>🎁 Chapter 4</h1>
+
+<h2>Tap the Gifts ❤️</h2>
+
+<div class="giftContainer">
+
+<div class="gift" data-message="You're the best gift in my life ❤️">
+🎁
+</div>
+
+<div class="gift" data-message="May all your dreams come true 🌸">
+🎁
+</div>
+
+<div class="gift" data-message="I Love You Forever ❤️">
+🎁
+</div>
+
+</div>
+
+<p id="giftMessage"></p>
+
+<button class="nextBtn">
+Next ➜
+</button>
+
+</section>
+<!-- Chapter 5 -->
+
+<section class="chapter">
+
+<h1>📸 Chapter 5</h1>
+
+<h2>Your Memories ❤️</h2>
+
+<div class="gallery">
+
+<div class="photo">
+<img src="Madhu1.jpg" alt="Memory 1">
+<p>❤️ You are my heart.</p>
+</div>
+
+<div class="photo">
+<img src="Madhu2.jpg" alt="Memory 2">
+<p>😊 Your smile makes my day brighter.</p>
+</div>
+
+<div class="photo">
+<img src="Madhu3.jpg" alt="Memory 3">
+<p>💖 You are my favorite.</p>
+</div>
+
+</div>
+
+<button class="nextBtn">
+Next ➜
+</button>
+
+</section>
+    <!-- Chapter 6 -->
+
+<section class="chapter">
+
+<h1>💖 Chapter 6</h1>
+
+<h2>My Promises To You</h2>
+
+<div class="cards">
+
+<div class="card">
+❤️ I'll always respect you.
+</div>
+
+<div class="card">
+🌹 I'll always support your dreams.
+</div>
+
+<div class="card">
+🥰 I'll always make you smile.
+</div>
+
+<div class="card">
+♾️ I'll always love you.
+</div>
+
+</div>
+
+<button class="nextBtn">
+Next ➜
+</button>
+
+</section>
+
+<!-- Chapter 7 -->
+
+<section class="chapter">
+
+<h1>🎂 Chapter 7</h1>
+
+<h2>Make A Birthday Wish ❤️</h2>
+
+<div class="cake" id="cake">
+
+🎂
+
+</div>
+
+<p>
+Close your eyes...
+Make a beautiful wish...
+May every dream of yours come true. ✨
+</p>
+
+<button id="cakeBtn">
+
+Blow Candles 🕯️
+
+</button>
+
+<button class="nextBtn">
+
+Next ➜
+
+</button>
+
+</section>
+
+<!-- Chapter 8 -->
+
+<section class="chapter">
+
+<h1>💌 Chapter 8</h1>
+
+<h2>My Letter To You ❤️</h2>
+
+<div class="letter">
+
+<h3>My Dearest Madhu Priya ❤️</h3>
+
+<p id="letterText">
+
+Happy Birthday, my love.
+
+Today is one of the most beautiful days because it's the day someone truly special came into this world.
+
+I don't always know the perfect words to express how much you mean to me, but I hope this little surprise shows even a small part of what is in my heart.
+
+Your smile has a way of making everything feel brighter. Your kindness, your laughter, and the way you are simply yourself are the reasons you are so special to me.
+
+Thank you for being such a wonderful person. I hope this year brings you endless happiness, success, good health, unforgettable memories, and countless reasons to smile.
+
+May every dream you have come true, and may your heart always stay as beautiful as it is today.
+
+No matter where life takes us, I will always wish the very best for you.
+
+Happy Birthday once again, Madhu Priya.
+
+Keep smiling, keep shining, and never stop being the amazing person you are.
+
+❤️ Forever Yours ❤️
+
+</p>
+
+</div>
+
+<button class="nextBtn">
+
+Next ➜
+
+</button>
+
+    </section>
+    <!-- Chapter 9 -->
+
+<section class="chapter">
+
+<h1>🎵 Chapter 9</h1>
+
+<h2>Special Song ❤️</h2>
+
+<p>
+
+Every beautiful memory deserves a beautiful song.
+
+Whenever this song plays, I hope you remember this day and smile.
+
+</p>
+
+<button id="musicBtn">
+
+▶ Play Song
+
+</button>
+
+<button class="nextBtn">
+
+Next ➜
+
+</button>
+
+</section>
+
+<!-- Chapter 10 -->
+
+<section class="chapter">
+
+<h1>🎆 Chapter 10</h1>
+
+<h2>It's Celebration Time ❤️</h2>
+
+<h3>
+
+🎈🎈 HAPPY 17TH BIRTHDAY 🎈🎈
+
+</h3>
+
+<p>
+
+May your smile shine brighter than the stars.
+
+May every wish come true.
+
+May happiness always stay with you.
+
+</p>
+
+<div id="fireworks"></div>
+
+<button class="nextBtn">
+
+Next ➜
+
+</button>
+
+</section>
+
+<!-- Chapter 11 -->
+
+<section class="chapter">
+
+<h1>👑 Chapter 11</h1>
+
+<h2>Always My Princess ❤️</h2>
+
+<p>
+
+You are one of the most beautiful parts of my life.
+
+Thank you for every smile, every laugh, and every wonderful memory.
+
+No matter how many birthdays pass, I'll always wish the best for you.
+
+Never stop smiling because your smile makes the world brighter.
+
+❤️
+
+</p>
+
+<button class="nextBtn">
+
+Next ➜
+
+</button>
+
+</section>
+<section class="chapter">
+
+<h1>❤️ The End ❤️</h1>
+
+<h2>Forever & Always</h2>
+
+<h1>
+
+Happy Birthday Madhu Priya 🎂❤️
+
+</h1>
+
+<p>
+
+Thank you for reading this little journey.
+
+This website was made especially for you.
+
+I hope today becomes one of your happiest memories.
+
+Stay blessed.
+
+Stay happy.
+
+Keep smiling.
+
+❤️ I Love You ❤️
+
+Forever Yours,
+
+(Hubby)
+
+</p>
+
+<button id="restart">
+
+Replay Journey 🔄
+
+</button>
+
+</section>
+
+</div>
+
+<script src="Script.js"></script>
+</body>
+</html>
