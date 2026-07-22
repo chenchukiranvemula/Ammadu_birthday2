@@ -64,6 +64,9 @@ nextBtns.forEach(btn => {
         }
 
         chapters[currentChapter].classList.remove("active");
+        if(currentChapter===7){
+    startTyping();
+        }
 
         currentChapter++;
 
@@ -154,26 +157,38 @@ if (musicBtn) {
 // PREMIUM TYPEWRITER LETTER
 // ================================
 
-const letter = document.getElementById("letterText");
+const letter=document.getElementById("letterText");
 
-if (letter) {
+let typed=false;
 
-    const text = letter.innerText;
-    letter.innerHTML = '<span id="typed"></span><span class="cursor">|</span>';
+function startTyping(){
 
-    const typed = document.getElementById("typed");
+if(!letter || typed) return;
 
-    let i = 0;
+typed=true;
 
-    function typeWriter() {
-        if (i < text.length) {
-            typed.textContent += text.charAt(i);
-            i++;
-            setTimeout(typeWriter, 35);
-        }
-    }
+const text=letter.innerText;
 
-    setTimeout(typeWriter, 700);
+letter.innerHTML="";
+
+let i=0;
+
+function type(){
+
+if(i<text.length){
+
+letter.innerHTML+=text.charAt(i)+"<span class='cursor'>|</span>";
+
+i++;
+
+setTimeout(type,35);
+
+}
+
+}
+
+type();
+
 }
 
 // ================================
@@ -249,3 +264,29 @@ location.reload();
 });
 
            }
+// ================================
+// TOUCH BUBBLE EFFECT
+// ================================
+
+document.addEventListener("click", function(e){
+
+    for(let i=0;i<8;i++){
+
+        const bubble=document.createElement("div");
+
+        bubble.className="touchBubble";
+
+        bubble.innerHTML=Math.random()>0.5?"❤️":"✨";
+
+        bubble.style.left=e.clientX+"px";
+        bubble.style.top=e.clientY+"px";
+
+        bubble.style.setProperty("--x",(Math.random()*200-100)+"px");
+        bubble.style.setProperty("--y",(-80-Math.random()*120)+"px");
+
+        document.body.appendChild(bubble);
+
+        setTimeout(()=>bubble.remove(),1500);
+    }
+
+});
