@@ -111,29 +111,40 @@ cakeBtn.addEventListener("click",()=>{
 // MUSIC
 // ================================
 
-if(musicBtn){
+if (musicBtn) {
 
-musicBtn.addEventListener("click",()=>{
+    musicBtn.addEventListener("click", () => {
 
-    if(chapterSong.paused){
+        if (chapterSong.paused) {
 
-        bgMusic.pause();
+            // Pause background music
+            bgMusic.pause();
 
-        chapterSong.play();
+            // Play special song from the beginning
+            chapterSong.currentTime = 0;
+            chapterSong.play();
 
-        musicBtn.innerHTML="⏸ Pause Song";
+            musicBtn.innerHTML = "⏸ Pause Our Song";
 
-    }else{
+        } else {
 
-        chapterSong.pause();
+            // Pause special song
+            chapterSong.pause();
 
+            // Resume background music
+            bgMusic.play();
+
+            musicBtn.innerHTML = "▶ Play Our Song";
+
+        }
+
+    });
+
+    // When the special song ends, resume background music automatically
+    chapterSong.addEventListener("ended", () => {
         bgMusic.play();
-
-        musicBtn.innerHTML="▶ Play Song";
-
-    }
-
-});
+        musicBtn.innerHTML = "▶ Play Our Song";
+    });
 
 }
 
