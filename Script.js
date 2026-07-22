@@ -678,6 +678,8 @@ startTimer();
 }
 
 function unlockLove(){
+    
+    playHeartUnlock();
 
 unlockBtn.disabled=true;
 
