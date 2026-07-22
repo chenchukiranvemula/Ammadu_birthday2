@@ -532,3 +532,228 @@ heart.remove();
 });
 
 });
+//========================================
+// LOVE LOCK SYSTEM
+//========================================
+
+const SECRET_DAY = 16;
+const SECRET_MONTH = 9;
+const SECRET_YEAR = 2024;
+
+let attempts = 5;
+let locked = false;
+
+const lockScreen = document.getElementById("lockScreen");
+const unlockBtn = document.getElementById("unlockBtn");
+
+const dayInput = document.getElementById("day");
+const monthInput = document.getElementById("month");
+const yearInput = document.getElementById("year");
+
+const chance = document.getElementById("chance");
+const roseMessage = document.getElementById("roseMessage");
+const lockMessage = document.getElementById("lockMessage");
+
+const roseTexts = [
+
+"🌹<br><b>Remember My Proposal  ❤️</b>",
+
+"🌸<br><b>Think about our sweetest memory 💕</b>",
+
+"🌺<br><b>You are getting closer ❤️</b>",
+
+"🌷<br><b>One more chance... Believe in your heart 💖</b>",
+
+"🥀<br><b>Too many wrong memories 💔</b>"
+
+];
+
+unlockBtn.addEventListener("click",()=>{
+
+if(locked) return;
+
+const d = Number(dayInput.value);
+const m = Number(monthInput.value);
+const y = Number(yearInput.value);
+
+if(d===SECRET_DAY && m===SECRET_MONTH && y===SECRET_YEAR){
+
+unlockSuccess();
+
+}else{
+
+wrongPassword();
+
+}
+
+});
+
+function wrongPassword(){
+
+attempts--;
+
+chance.innerHTML=attempts;
+
+roseMessage.innerHTML=roseTexts[Math.max(0,5-attempts-1)];
+
+lockCardShake();
+
+createRoseExplosion();
+
+if(attempts<=0){
+
+startLockTimer();
+
+}
+
+}
+
+function unlockSuccess(){
+
+roseMessage.innerHTML=
+"🌹<br><h2>Our First Kiss Day ❤️</h2>";
+
+createHeartExplosion();
+
+setTimeout(()=>{
+
+lockScreen.style.transition="1.2s";
+
+lockScreen.style.opacity="0";
+
+setTimeout(()=>{
+
+lockScreen.style.display="none";
+
+},1200);
+
+},2500);
+
+}
+
+function lockCardShake(){
+
+document.querySelector(".lockCard").animate([
+
+{transform:"translateX(-10px)"},
+
+{transform:"translateX(10px)"},
+
+{transform:"translateX(-8px)"},
+
+{transform:"translateX(8px)"},
+
+{transform:"translateX(0)"}
+
+],{
+
+duration:450
+
+});
+
+}
+
+function createHeartExplosion(){
+
+for(let i=0;i<60;i++){
+
+const heart=document.createElement("div");
+
+heart.innerHTML=Math.random()>0.5?"❤️":"🌸";
+
+heart.className="partyItem";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.top=Math.random()*100+"vh";
+
+heart.style.fontSize=(20+Math.random()*25)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),3500);
+
+}
+
+}
+
+function createRoseExplosion(){
+
+const rose=document.createElement("div");
+
+rose.innerHTML="🌹";
+
+rose.style.position="fixed";
+
+rose.style.left="50%";
+
+rose.style.top="65%";
+
+rose.style.transform="translate(-50%,-50%) scale(.2)";
+
+rose.style.fontSize="40px";
+
+rose.style.zIndex="999999";
+
+rose.style.transition="1s";
+
+document.body.appendChild(rose);
+
+setTimeout(()=>{
+
+rose.style.transform="translate(-50%,-50%) scale(5)";
+
+rose.style.opacity="0";
+
+},50);
+
+setTimeout(()=>rose.remove(),1000);
+
+}
+
+function startLockTimer(){
+
+locked=true;
+
+let sec=60;
+
+unlockBtn.disabled=true;
+
+const timer=document.createElement("div");
+
+timer.className="lockTimer";
+
+lockMessage.appendChild(timer);
+
+const x=setInterval(()=>{
+
+timer.innerHTML=
+"⏳ Try Again in <br><b>"+sec+"s</b>";
+
+sec--;
+
+if(sec<0){
+
+clearInterval(x);
+
+locked=false;
+
+attempts=5;
+
+chance.innerHTML=5;
+
+unlockBtn.disabled=false;
+
+timer.remove();
+
+roseMessage.innerHTML="";
+
+dayInput.value="";
+monthInput.value="";
+yearInput.value="";
+
+}
+
+},1000);
+
+}
