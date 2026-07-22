@@ -602,3 +602,48 @@ transform:translateY(0) scale(1);
 }
 
    }
+/* ===============================
+   CHAPTER 10 CELEBRATION
+================================ */
+
+#happyGlow{
+font-size:3rem;
+margin:20px 0;
+animation:glowBirthday 1.5s infinite alternate;
+}
+
+@keyframes glowBirthday{
+
+from{
+text-shadow:0 0 10px #fff,0 0 20px #ff69b4;
+transform:scale(1);
+}
+
+to{
+text-shadow:0 0 25px #fff,0 0 60px #ff1493;
+transform:scale(1.08);
+}
+
+}
+
+.partyItem{
+position:fixed;
+font-size:30px;
+pointer-events:none;
+animation:partyFall 4s linear forwards;
+z-index:999;
+}
+
+@keyframes partyFall{
+
+0%{
+opacity:1;
+transform:translateY(-80px) rotate(0deg);
+}
+
+100%{
+opacity:0;
+transform:translateY(110vh) rotate(720deg);
+}
+
+}
