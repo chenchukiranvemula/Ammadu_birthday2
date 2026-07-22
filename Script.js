@@ -630,6 +630,8 @@ wrongDate();
 };
 
 function wrongDate(){
+    
+    vibratePhone();
 
 attempts--;
 
@@ -812,3 +814,85 @@ lock.remove();
 },800);
 
 }
+/*==================================
+      LIVE BACKGROUND
+==================================*/
+
+setInterval(()=>{
+
+if(document.getElementById("lockScreen").style.display==="none") return;
+
+const heart=document.createElement("div");
+
+heart.className="floatingHeart";
+
+heart.innerHTML=Math.random()>0.5?"❤️":"💖";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(15+Math.random()*18)+"px";
+
+heart.style.animationDuration=(6+Math.random()*5)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),11000);
+
+},500);
+
+
+setInterval(()=>{
+
+if(document.getElementById("lockScreen").style.display==="none") return;
+
+const petal=document.createElement("div");
+
+petal.className="floatingPetal";
+
+petal.innerHTML="🌸";
+
+petal.style.left=Math.random()*100+"vw";
+
+petal.style.fontSize=(18+Math.random()*12)+"px";
+
+petal.style.animationDuration=(7+Math.random()*5)+"s";
+
+document.body.appendChild(petal);
+
+setTimeout(()=>petal.remove(),12000);
+
+},700);
+
+
+/* Glow selected picker */
+
+const selects=document.querySelectorAll("#dayPicker,#monthPicker,#yearPicker");
+
+selects.forEach(s=>{
+
+s.addEventListener("change",()=>{
+
+s.classList.add("selectedGlow");
+
+setTimeout(()=>{
+
+s.classList.remove("selectedGlow");
+
+},500);
+
+});
+
+});
+
+
+/* Small vibration on wrong password */
+
+function vibratePhone(){
+
+if(navigator.vibrate){
+
+navigator.vibrate([100,80,100]);
+
+}
+
+   }
