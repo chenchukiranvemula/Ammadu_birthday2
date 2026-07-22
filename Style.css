@@ -564,3 +564,41 @@ opacity:0;
 }
 
 }
+/* Typewriter Cursor */
+
+.cursor{
+display:inline-block;
+color:#ff69b4;
+font-weight:bold;
+animation:cursorBlink .7s infinite;
+}
+
+@keyframes cursorBlink{
+
+50%{
+opacity:0;
+}
+
+}
+
+/* Letter Animation */
+
+.letter{
+
+animation:letterOpen .8s ease;
+
+}
+
+@keyframes letterOpen{
+
+from{
+opacity:0;
+transform:translateY(40px) scale(.95);
+}
+
+to{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+
+   }
