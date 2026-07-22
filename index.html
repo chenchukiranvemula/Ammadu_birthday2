@@ -16,6 +16,48 @@
 </head>
 
 <body>
+    <!-- ===========================
+     LOVE LOCK SCREEN
+=========================== -->
+
+<div id="lockScreen">
+
+    <div class="stars"></div>
+
+    <div class="lockCard">
+
+        <h1>💖 Our Secret Memory 💖</h1>
+
+        <p>
+            Before entering this journey...
+            unlock it with our special date ❤️
+        </p>
+
+        <div class="calendarBox">
+
+            <input type="number" id="day" min="1" max="31" placeholder="DD">
+
+            <input type="number" id="month" min="1" max="12" placeholder="MM">
+
+            <input type="number" id="year" placeholder="YYYY">
+
+        </div>
+
+        <button id="unlockBtn">
+            🔓 Unlock Our Journey
+        </button>
+
+        <p id="attempts">
+            ❤️ Attempts Left : <span id="chance">5</span>
+        </p>
+
+        <p id="lockMessage"></p>
+
+        <div id="roseMessage"></div>
+
+    </div>
+
+</div>
 
 <audio id="bgMusic" loop>
     <source src="Birthdaysong.mp3" type="audio/mpeg">
