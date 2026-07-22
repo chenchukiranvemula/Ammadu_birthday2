@@ -8,20 +8,19 @@ padding:0;
 box-sizing:border-box;
 font-family:'Poppins',sans-serif;
 }
-
-html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 100%;
-    overflow-x: hidden;
+html, body{
+    margin:0;
+    padding:0;
+    width:100%;
+    min-height:100vh;
 }
 
-body {
-    background: linear-gradient(-45deg, #150020, #35004d, #59006d, #ff1493);
-    background-size: 400% 400%;
-    animation: bgMove 15s ease infinite;
-    color: white;
+body{
+    background: linear-gradient(-45deg,#150020,#35004d,#59006d,#ff1493);
+    background-size:400% 400%;
+    animation:bgMove 15s ease infinite;
+    color:white;
+    overflow-x:hidden;
 }
 
 /* Website */
