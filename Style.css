@@ -529,3 +529,15 @@ button:hover{
     transform:translateY(-4px) scale(1.08);
     box-shadow:0 0 30px #ff69b4;
        }
+.cursor{
+    display:inline-block;
+    color:#ffd6ec;
+    font-weight:bold;
+    animation:blink .8s infinite;
+}
+
+@keyframes blink{
+    50%{
+        opacity:0;
+    }
+}
