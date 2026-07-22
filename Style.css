@@ -1512,3 +1512,47 @@ transform:scale(1.05);
 }
 
                      }
+/* Premium Gift */
+
+.gift{
+    position:relative;
+    overflow:hidden;
+    transition:0.5s;
+}
+
+.giftIcon{
+    font-size:60px;
+    transition:0.6s;
+}
+
+.giftHeart{
+    position:absolute;
+    left:50%;
+    top:60%;
+    transform:translate(-50%,40px) scale(0);
+    font-size:45px;
+    opacity:0;
+    transition:0.8s;
+}
+
+.gift.open .giftIcon{
+    transform:rotate(-20deg) scale(1.1);
+}
+
+.gift.open .giftHeart{
+    opacity:1;
+    transform:translate(-50%,-35px) scale(1.5);
+    animation:heartBeat .8s infinite;
+}
+
+@keyframes heartBeat{
+
+0%,100%{
+    transform:translate(-50%,-35px) scale(1.4);
+}
+
+50%{
+    transform:translate(-50%,-35px) scale(1.7);
+}
+
+}
