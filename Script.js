@@ -62,7 +62,9 @@ nextBtns.forEach(btn => {
             bgMusic.play().catch(() => {});
             musicBtn.innerHTML = "▶ Play Our Song";
         }
-
+if(currentChapter === 9){
+    startCelebration();
+}
         chapters[currentChapter].classList.remove("active");
         // Start typing when Chapter 8 opens
 if(currentChapter === 7){
