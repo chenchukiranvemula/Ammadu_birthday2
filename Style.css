@@ -1203,3 +1203,159 @@ transform:scale(1.6);
 }
 
    }
+/*=====================================
+     PREMIUM UNLOCK ANIMATION
+======================================*/
+
+.unlockRose{
+position:fixed;
+left:50%;
+bottom:-250px;
+transform:translateX(-50%);
+font-size:180px;
+z-index:999999;
+animation:roseGrow 3s forwards;
+filter:drop-shadow(0 0 30px hotpink);
+}
+
+@keyframes roseGrow{
+
+0%{
+bottom:-250px;
+transform:translateX(-50%) scale(.2) rotate(-20deg);
+opacity:0;
+}
+
+40%{
+opacity:1;
+}
+
+70%{
+transform:translateX(-50%) scale(1.2);
+}
+
+100%{
+bottom:20%;
+transform:translateX(-50%) scale(1);
+opacity:1;
+}
+
+}
+
+.unlockText{
+
+position:fixed;
+
+left:50%;
+
+top:72%;
+
+transform:translateX(-50%);
+
+color:white;
+
+font-size:32px;
+
+font-weight:bold;
+
+text-align:center;
+
+z-index:999999;
+
+opacity:0;
+
+animation:textFade 2s forwards;
+
+animation-delay:2.2s;
+
+text-shadow:0 0 20px hotpink;
+
+}
+
+@keyframes textFade{
+
+from{
+
+opacity:0;
+transform:translate(-50%,40px);
+
+}
+
+to{
+
+opacity:1;
+transform:translate(-50%,0);
+
+}
+
+}
+
+.petal{
+
+position:fixed;
+
+top:-50px;
+
+font-size:24px;
+
+pointer-events:none;
+
+z-index:99999;
+
+animation:petalFall linear forwards;
+
+}
+
+@keyframes petalFall{
+
+0%{
+
+transform:translateY(-50px) rotate(0deg);
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(120vh) rotate(720deg);
+
+opacity:0;
+
+}
+
+}
+
+.sparkle{
+
+position:fixed;
+
+font-size:18px;
+
+pointer-events:none;
+
+z-index:99999;
+
+animation:spark 1.5s forwards;
+
+}
+
+@keyframes spark{
+
+0%{
+
+transform:scale(.2);
+
+opacity:1;
+
+}
+
+100%{
+
+transform:scale(2);
+
+opacity:0;
+
+}
+
+}
