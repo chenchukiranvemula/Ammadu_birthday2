@@ -778,3 +778,40 @@ opacity:0;
 }
 
    }
+/* Hearts while typing */
+
+.typingHeart{
+
+position:fixed;
+
+bottom:120px;
+
+font-size:22px;
+
+pointer-events:none;
+
+z-index:999;
+
+animation:heartFly 2.5s linear forwards;
+
+}
+
+@keyframes heartFly{
+
+0%{
+
+transform:translateY(0) scale(.6);
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(-250px) scale(1.8);
+
+opacity:0;
+
+}
+
+}
