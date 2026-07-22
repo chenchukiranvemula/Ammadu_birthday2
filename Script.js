@@ -65,7 +65,14 @@ nextBtns.forEach(btn => {
 
         chapters[currentChapter].classList.remove("active");
         if(currentChapter === 9){
+
     startCelebration();
+
+    // Stop celebration after 8 seconds
+    setTimeout(() => {
+        document.querySelectorAll(".partyItem").forEach(e => e.remove());
+    }, 8000);
+
         }
         // Start typing when Chapter 8 opens
 if(currentChapter === 7){
@@ -82,6 +89,7 @@ if(currentChapter === 7){
     });
 
 });
+
 // ================================
 // GIFTS
 // ================================
