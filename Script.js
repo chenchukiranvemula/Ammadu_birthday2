@@ -138,35 +138,29 @@ musicBtn.addEventListener("click",()=>{
 }
 
 // ================================
-// LETTER TYPING
+// PREMIUM TYPEWRITER LETTER
 // ================================
 
-const letter=document.getElementById("letterText");
+const letter = document.getElementById("letterText");
 
-if(letter){
+if (letter) {
 
-const fullText=letter.innerHTML;
+    const text = letter.innerText;
+    letter.innerHTML = '<span id="typed"></span><span class="cursor">|</span>';
 
-letter.innerHTML="";
+    const typed = document.getElementById("typed");
 
-let i=0;
+    let i = 0;
 
-function typing(){
-
-    if(i<fullText.length){
-
-        letter.innerHTML+=fullText.charAt(i);
-
-        i++;
-
-        setTimeout(typing,20);
-
+    function typeWriter() {
+        if (i < text.length) {
+            typed.textContent += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, 35);
+        }
     }
 
-}
-
-setTimeout(typing,700);
-
+    setTimeout(typeWriter, 700);
 }
 
 // ================================
