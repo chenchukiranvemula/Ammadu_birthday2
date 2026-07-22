@@ -16,11 +16,25 @@ html, body{
 }
 
 body{
-    background: linear-gradient(-45deg,#150020,#35004d,#59006d,#ff1493);
+    margin:0;
+    min-height:100vh;
+    background:linear-gradient(-45deg,#150020,#35004d,#59006d,#ff1493);
     background-size:400% 400%;
+    background-attachment:fixed;
     animation:bgMove 15s ease infinite;
     color:white;
     overflow-x:hidden;
+}
+@keyframes bgMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* Website */
