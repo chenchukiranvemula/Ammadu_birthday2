@@ -54,6 +54,15 @@ nextBtns.forEach(btn => {
 
     btn.addEventListener("click", () => {
 
+        // When leaving Chapter 9
+        if (currentChapter === 8) {   // Chapter 9 (0-based index)
+            chapterSong.pause();
+            chapterSong.currentTime = 0;
+
+            bgMusic.play().catch(() => {});
+            musicBtn.innerHTML = "▶ Play Our Song";
+        }
+
         chapters[currentChapter].classList.remove("active");
 
         currentChapter++;
@@ -66,7 +75,6 @@ nextBtns.forEach(btn => {
     });
 
 });
-
 // ================================
 // GIFTS
 // ================================
@@ -120,30 +128,24 @@ if (musicBtn) {
             // Pause background music
             bgMusic.pause();
 
-            // Play special song from the beginning
+            // Play Chapter 9 song
             chapterSong.currentTime = 0;
             chapterSong.play();
 
-            musicBtn.innerHTML = "⏸ Pause Our Song";
+            musicBtn.innerHTML = "⏸ Pause Song";
 
         } else {
 
-            // Pause special song
+            // Stop Chapter 9 song
             chapterSong.pause();
+            chapterSong.currentTime = 0;
 
             // Resume background music
-            bgMusic.play();
+            bgMusic.play().catch(() => {});
 
             musicBtn.innerHTML = "▶ Play Our Song";
-
         }
 
-    });
-
-    // When the special song ends, resume background music automatically
-    chapterSong.addEventListener("ended", () => {
-        bgMusic.play();
-        musicBtn.innerHTML = "▶ Play Our Song";
     });
 
 }
