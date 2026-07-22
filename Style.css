@@ -911,3 +911,276 @@ left:150%;
 transform:scale(.94);
 
 }
+/*==========================================
+          LOVE LOCK SCREEN
+==========================================*/
+
+#lockScreen{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+z-index:99999;
+background:linear-gradient(-45deg,#12001f,#2d0047,#51006d,#ff1493);
+background-size:400% 400%;
+animation:bgMove 12s ease infinite;
+}
+
+/* Glass Card */
+
+.lockCard{
+
+width:90%;
+max-width:430px;
+
+padding:35px;
+
+text-align:center;
+
+border-radius:25px;
+
+background:rgba(255,255,255,.12);
+
+backdrop-filter:blur(18px);
+
+box-shadow:
+0 0 30px rgba(255,20,147,.45);
+
+animation:cardFloat 4s ease-in-out infinite;
+
+}
+
+@keyframes cardFloat{
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-10px);
+}
+
+}
+
+.lockCard h1{
+
+color:white;
+
+font-size:32px;
+
+margin-bottom:15px;
+
+text-shadow:0 0 20px hotpink;
+
+}
+
+.lockCard p{
+
+color:white;
+
+margin:10px 0;
+
+}
+
+/* Calendar */
+
+.calendarBox{
+
+display:flex;
+
+justify-content:center;
+
+gap:12px;
+
+margin:25px 0;
+
+}
+
+.calendarBox input{
+
+width:85px;
+
+height:65px;
+
+border:none;
+
+outline:none;
+
+border-radius:15px;
+
+text-align:center;
+
+font-size:24px;
+
+font-weight:bold;
+
+background:white;
+
+transition:.4s;
+
+}
+
+.calendarBox input:focus{
+
+transform:scale(1.1);
+
+box-shadow:0 0 20px hotpink;
+
+}
+
+/* Unlock Button */
+
+#unlockBtn{
+
+margin-top:20px;
+
+padding:15px 35px;
+
+border:none;
+
+border-radius:40px;
+
+font-size:18px;
+
+font-weight:bold;
+
+background:linear-gradient(45deg,#ff1493,#ff69b4);
+
+color:white;
+
+cursor:pointer;
+
+transition:.4s;
+
+}
+
+#unlockBtn:hover{
+
+transform:scale(1.08);
+
+box-shadow:0 0 30px hotpink;
+
+}
+
+/* Attempts */
+
+#attempts{
+
+font-size:18px;
+
+font-weight:bold;
+
+}
+
+/* Rose Message */
+
+#roseMessage{
+
+margin-top:25px;
+
+font-size:22px;
+
+color:white;
+
+min-height:80px;
+
+animation:fadeRose .8s;
+
+}
+
+@keyframes fadeRose{
+
+from{
+
+opacity:0;
+
+transform:translateY(30px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+/* Lock Timer */
+
+.lockTimer{
+
+font-size:30px;
+
+color:#fff;
+
+text-shadow:0 0 15px red;
+
+margin-top:25px;
+
+}
+
+/* Floating Stars */
+
+.stars{
+
+position:absolute;
+
+width:100%;
+
+height:100%;
+
+overflow:hidden;
+
+pointer-events:none;
+
+}
+
+.stars::before{
+
+content:"";
+
+position:absolute;
+
+width:2px;
+
+height:2px;
+
+background:white;
+
+box-shadow:
+10vw 20vh white,
+20vw 60vh white,
+30vw 40vh white,
+45vw 80vh white,
+60vw 25vh white,
+70vw 65vh white,
+80vw 35vh white,
+90vw 75vh white;
+
+animation:twinkle 3s infinite;
+
+}
+
+@keyframes twinkle{
+
+0%,100%{
+
+opacity:.2;
+
+}
+
+50%{
+
+opacity:1;
+
+}
+
+   }
