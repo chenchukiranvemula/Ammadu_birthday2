@@ -16,44 +16,70 @@
 </head>
 
 <body>
-    <!-- ===========================
-     LOVE LOCK SCREEN
-=========================== -->
+    <!-- =========================
+      PREMIUM LOVE LOCK
+========================= -->
 
 <div id="lockScreen">
 
+    <!-- Animated Background -->
+    <div class="sky"></div>
     <div class="stars"></div>
+    <div class="petals"></div>
 
-    <div class="lockCard">
+    <div class="lockContainer">
 
-        <h1>💖 Our Secret Memory 💖</h1>
+        <h1 class="lockTitle">🌹 Our Secret Memory ❤️</h1>
 
-        <p>
-            Before entering this journey...
-            unlock it with our special date ❤️
+        <p class="lockSub">
+            Some memories are too precious to protect
+            with an ordinary password...
         </p>
 
-        <div class="calendarBox">
+        <p class="lockSub2">
+            Unlock this journey by remembering
+            our special day ❤️
+        </p>
 
-            <input type="number" id="day" min="1" max="31" placeholder="DD">
+        <div class="calendarGlass">
 
-            <input type="number" id="month" min="1" max="12" placeholder="MM">
+            <div class="pickerTitle">
+                📅 Choose Our Special Date
+            </div>
 
-            <input type="number" id="year" placeholder="YYYY">
+            <div class="pickerRow">
+
+                <select id="dayPicker"></select>
+
+                <select id="monthPicker"></select>
+
+                <select id="yearPicker"></select>
+
+            </div>
 
         </div>
 
         <button id="unlockBtn">
-            🔓 Unlock Our Journey
+
+            ❤️ Unlock Our Journey ❤️
+
         </button>
 
-        <p id="attempts">
-            ❤️ Attempts Left : <span id="chance">5</span>
-        </p>
+        <div id="attemptBox">
 
-        <p id="lockMessage"></p>
+            Attempts Left ❤️
 
-        <div id="roseMessage"></div>
+            <span id="chanceCount">
+
+                5
+
+            </span>
+
+        </div>
+
+        <div id="roseArea"></div>
+
+        <div id="timerArea"></div>
 
     </div>
 
