@@ -1556,3 +1556,128 @@ transform:scale(1.05);
 }
 
 }
+/*==========================
+      MUSIC PLAYER
+===========================*/
+
+.musicPlayer{
+
+text-align:center;
+
+margin-top:30px;
+
+}
+
+.vinyl{
+
+font-size:120px;
+
+display:inline-block;
+
+filter:drop-shadow(0 0 25px hotpink);
+
+}
+
+.spin{
+
+animation:spinRecord 3s linear infinite;
+
+}
+
+@keyframes spinRecord{
+
+from{
+
+transform:rotate(0deg);
+
+}
+
+to{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+.songText{
+
+margin:25px;
+
+font-size:20px;
+
+line-height:1.8;
+
+color:white;
+
+}
+
+.equalizer{
+
+display:flex;
+
+justify-content:center;
+
+align-items:flex-end;
+
+gap:6px;
+
+height:45px;
+
+margin:25px 0;
+
+}
+
+.equalizer span{
+
+width:8px;
+
+height:15px;
+
+background:#ff1493;
+
+border-radius:20px;
+
+animation:equalizer 1s infinite;
+
+}
+
+.equalizer span:nth-child(2){
+
+animation-delay:.2s;
+
+}
+
+.equalizer span:nth-child(3){
+
+animation-delay:.4s;
+
+}
+
+.equalizer span:nth-child(4){
+
+animation-delay:.6s;
+
+}
+
+.equalizer span:nth-child(5){
+
+animation-delay:.8s;
+
+}
+
+@keyframes equalizer{
+
+0%,100%{
+
+height:15px;
+
+}
+
+50%{
+
+height:45px;
+
+}
+
+   }
