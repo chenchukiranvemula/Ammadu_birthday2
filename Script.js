@@ -196,6 +196,8 @@ cakeBtn.addEventListener("click",()=>{
 // MUSIC
 // ================================
 
+const vinyl = document.getElementById("vinyl");
+
 if (musicBtn) {
 
     musicBtn.addEventListener("click", () => {
@@ -209,7 +211,12 @@ if (musicBtn) {
             chapterSong.currentTime = 0;
             chapterSong.play();
 
+            // Start vinyl animation
+            if(vinyl) vinyl.classList.add("spin");
+
             musicBtn.innerHTML = "⏸ Pause Song";
+
+            startMusicEffects();   // ❤️ Start hearts & music notes
 
         } else {
 
@@ -220,13 +227,80 @@ if (musicBtn) {
             // Resume background music
             bgMusic.play().catch(() => {});
 
+            // Stop vinyl animation
+            if(vinyl) vinyl.classList.remove("spin");
+
             musicBtn.innerHTML = "▶ Play Our Song";
+
         }
 
     });
 
 }
 
+/* When the song ends */
+chapterSong.addEventListener("ended", () => {
+
+    if(vinyl) vinyl.classList.remove("spin");
+
+    bgMusic.play().catch(() => {});
+
+    musicBtn.innerHTML = "▶ Play Our Song ❤️";
+
+});
+function startMusicEffects(){
+
+    for(let i=0;i<50;i++){
+
+        setTimeout(()=>{
+
+            const note=document.createElement("div");
+
+            note.innerHTML=Math.random()>0.5?"🎵":"🎶";
+
+            note.style.position="fixed";
+
+            note.style.left=Math.random()*100+"vw";
+
+            note.style.top="100vh";
+
+            note.style.fontSize=(20+Math.random()*20)+"px";
+
+            note.style.pointerEvents="none";
+
+            note.style.zIndex="9999";
+
+            document.body.appendChild(note);
+
+            note.animate([
+
+                {
+                    transform:"translateY(0)",
+                    opacity:1
+                },
+
+                {
+                    transform:"translateY(-100vh)",
+                    opacity:0
+                }
+
+            ],{
+
+                duration:4000
+
+            });
+
+            setTimeout(()=>{
+
+                note.remove();
+
+            },4000);
+
+        },i*150);
+
+    }
+
+}
 // ======================================
 // PREMIUM LOVE LETTER
 // ======================================
