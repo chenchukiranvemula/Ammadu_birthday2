@@ -99,7 +99,7 @@ if(cakeBtn){
 
 cakeBtn.addEventListener("click",()=>{
 
-    alert("🎂 Happy Birthday Madhu Priya ❤️");
+    alert("🎂 Happy Birthday Ammadu ❤️");
 
     createFireworks();
 
