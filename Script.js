@@ -54,42 +54,37 @@ nextBtns.forEach(btn => {
 
     btn.addEventListener("click", () => {
 
-        // When leaving Chapter 9
-        if (currentChapter === 8) {   // Chapter 9 (0-based index)
+        // Leaving Chapter 9 (special song)
+        if(currentChapter === 8){
             chapterSong.pause();
             chapterSong.currentTime = 0;
-
             bgMusic.play().catch(() => {});
             musicBtn.innerHTML = "▶ Play Our Song";
         }
 
         chapters[currentChapter].classList.remove("active");
-        if(currentChapter === 9){
-
-    startCelebration();
-
-    // Stop celebration after 8 seconds
-    setTimeout(() => {
-        document.querySelectorAll(".partyItem").forEach(e => e.remove());
-    }, 8000);
-
-        }
-        // Start typing when Chapter 8 opens
-if(currentChapter === 7){
-    setTimeout(startLetterTyping,500);
-}
 
         currentChapter++;
 
-        if (currentChapter >= chapters.length)
+        if(currentChapter >= chapters.length){
             currentChapter = chapters.length - 1;
+        }
 
         chapters[currentChapter].classList.add("active");
+
+        // Entering Chapter 8
+        if(currentChapter === 7){
+            setTimeout(startLetterTyping,500);
+        }
+
+        // Entering Chapter 10
+        if(currentChapter === 9){
+            startCelebration();
+        }
 
     });
 
 });
-
 // ================================
 // GIFTS
 // ================================
