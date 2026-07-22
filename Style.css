@@ -541,26 +541,26 @@ button:hover{
         opacity:0;
     }
 }
-/* Touch Animation */
+/* Touch Effect */
 
-.touchBubble{
+.bubble{
 position:fixed;
 font-size:24px;
 pointer-events:none;
 z-index:9999;
-animation:bubbleUp 1.5s ease-out forwards;
+animation:bubbleFly 1.5s ease forwards;
 }
 
-@keyframes bubbleUp{
+@keyframes bubbleFly{
 
 0%{
-opacity:1;
 transform:translate(0,0) scale(.3);
+opacity:1;
 }
 
 100%{
+transform:translate(var(--x),var(--y)) scale(1.8);
 opacity:0;
-transform:translate(var(--x),var(--y)) scale(2);
 }
 
-       }
+}
