@@ -911,9 +911,9 @@ left:150%;
 transform:scale(.94);
 
 }
-/*==========================================
-          LOVE LOCK SCREEN
-==========================================*/
+/*=============================
+     PREMIUM LOVE LOCK
+==============================*/
 
 #lockScreen{
 position:fixed;
@@ -921,41 +921,51 @@ top:0;
 left:0;
 width:100%;
 height:100%;
+overflow:hidden;
 display:flex;
 justify-content:center;
 align-items:center;
-overflow:hidden;
-z-index:99999;
-background:linear-gradient(-45deg,#12001f,#2d0047,#51006d,#ff1493);
+z-index:999999;
+background:linear-gradient(-45deg,#090019,#220033,#500050,#ff1493);
 background-size:400% 400%;
-animation:bgMove 12s ease infinite;
+animation:galaxyMove 18s ease infinite;
 }
 
-/* Glass Card */
+@keyframes galaxyMove{
 
-.lockCard{
+0%{background-position:0% 50%;}
 
-width:90%;
+50%{background-position:100% 50%;}
+
+100%{background-position:0% 50%;}
+
+}
+
+.lockContainer{
+
+width:92%;
 max-width:430px;
 
-padding:35px;
+padding:30px;
 
-text-align:center;
-
-border-radius:25px;
+border-radius:30px;
 
 background:rgba(255,255,255,.12);
 
 backdrop-filter:blur(18px);
 
-box-shadow:
-0 0 30px rgba(255,20,147,.45);
+border:1px solid rgba(255,255,255,.2);
 
-animation:cardFloat 4s ease-in-out infinite;
+box-shadow:
+0 0 35px rgba(255,20,147,.4);
+
+text-align:center;
+
+animation:floatLock 5s ease-in-out infinite;
 
 }
 
-@keyframes cardFloat{
+@keyframes floatLock{
 
 0%,100%{
 transform:translateY(0);
@@ -967,69 +977,96 @@ transform:translateY(-10px);
 
 }
 
-.lockCard h1{
+.lockTitle{
 
 color:white;
 
 font-size:32px;
 
-margin-bottom:15px;
+text-shadow:0 0 18px hotpink;
 
-text-shadow:0 0 20px hotpink;
+margin-bottom:10px;
 
 }
 
-.lockCard p{
+.lockSub,
+.lockSub2{
 
-color:white;
+color:#fff;
 
-margin:10px 0;
+line-height:1.7;
+
+margin-bottom:12px;
 
 }
 
 /* Calendar */
 
-.calendarBox{
+.calendarGlass{
+
+margin-top:25px;
+
+padding:20px;
+
+border-radius:20px;
+
+background:rgba(255,255,255,.08);
+
+box-shadow:0 0 20px rgba(255,255,255,.1);
+
+}
+
+.pickerTitle{
+
+color:white;
+
+font-size:20px;
+
+margin-bottom:18px;
+
+}
+
+.pickerRow{
 
 display:flex;
 
+gap:10px;
+
 justify-content:center;
-
-gap:12px;
-
-margin:25px 0;
 
 }
 
-.calendarBox input{
+.pickerRow select{
 
-width:85px;
+width:100px;
 
-height:65px;
+height:180px;
 
 border:none;
 
-outline:none;
+border-radius:18px;
 
-border-radius:15px;
+background:rgba(255,255,255,.9);
 
-text-align:center;
-
-font-size:24px;
+font-size:22px;
 
 font-weight:bold;
 
-background:white;
+text-align:center;
 
-transition:.4s;
+overflow-y:auto;
+
+scroll-behavior:smooth;
 
 }
 
-.calendarBox input:focus{
+.pickerRow select:focus{
 
-transform:scale(1.1);
+outline:none;
 
-box-shadow:0 0 20px hotpink;
+box-shadow:0 0 25px hotpink;
+
+transform:scale(1.05);
 
 }
 
@@ -1037,17 +1074,17 @@ box-shadow:0 0 20px hotpink;
 
 #unlockBtn{
 
-margin-top:20px;
+margin-top:25px;
 
 padding:15px 35px;
-
-border:none;
-
-border-radius:40px;
 
 font-size:18px;
 
 font-weight:bold;
+
+border:none;
+
+border-radius:40px;
 
 background:linear-gradient(45deg,#ff1493,#ff69b4);
 
@@ -1069,65 +1106,55 @@ box-shadow:0 0 30px hotpink;
 
 /* Attempts */
 
-#attempts{
+#attemptBox{
 
-font-size:18px;
+margin-top:20px;
+
+font-size:20px;
 
 font-weight:bold;
 
+color:white;
+
 }
 
-/* Rose Message */
+#chanceCount{
 
-#roseMessage{
+color:#ffd700;
+
+font-size:24px;
+
+}
+
+/* Rose Area */
+
+#roseArea{
+
+min-height:100px;
 
 margin-top:25px;
-
-font-size:22px;
 
 color:white;
 
-min-height:80px;
-
-animation:fadeRose .8s;
+font-size:22px;
 
 }
 
-@keyframes fadeRose{
+/* Timer */
 
-from{
+#timerArea{
 
-opacity:0;
+margin-top:20px;
 
-transform:translateY(30px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-}
-
-/* Lock Timer */
-
-.lockTimer{
-
-font-size:30px;
+font-size:28px;
 
 color:#fff;
 
-text-shadow:0 0 15px red;
-
-margin-top:25px;
+text-shadow:0 0 12px red;
 
 }
 
-/* Floating Stars */
+/* Stars */
 
 .stars{
 
@@ -1137,33 +1164,21 @@ width:100%;
 
 height:100%;
 
-overflow:hidden;
-
 pointer-events:none;
 
 }
 
-.stars::before{
-
-content:"";
+.star{
 
 position:absolute;
 
-width:2px;
+width:3px;
 
-height:2px;
+height:3px;
 
 background:white;
 
-box-shadow:
-10vw 20vh white,
-20vw 60vh white,
-30vw 40vh white,
-45vw 80vh white,
-60vw 25vh white,
-70vw 65vh white,
-80vw 35vh white,
-90vw 75vh white;
+border-radius:50%;
 
 animation:twinkle 3s infinite;
 
@@ -1175,11 +1190,15 @@ animation:twinkle 3s infinite;
 
 opacity:.2;
 
+transform:scale(.7);
+
 }
 
 50%{
 
 opacity:1;
+
+transform:scale(1.6);
 
 }
 
