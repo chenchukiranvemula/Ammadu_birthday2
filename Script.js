@@ -532,112 +532,130 @@ heart.remove();
 });
 
 });
-//========================================
-// LOVE LOCK SYSTEM
-//========================================
+/*====================================
+      LOVE LOCK - PART 3
+====================================*/
 
-const SECRET_DAY = 16;
-const SECRET_MONTH = 9;
-const SECRET_YEAR = 2024;
+const dayPicker = document.getElementById("dayPicker");
+const monthPicker = document.getElementById("monthPicker");
+const yearPicker = document.getElementById("yearPicker");
 
-let attempts = 5;
-let locked = false;
-
-const lockScreen = document.getElementById("lockScreen");
 const unlockBtn = document.getElementById("unlockBtn");
+const chanceCount = document.getElementById("chanceCount");
+const roseArea = document.getElementById("roseArea");
+const timerArea = document.getElementById("timerArea");
+const lockScreen = document.getElementById("lockScreen");
 
-const dayInput = document.getElementById("day");
-const monthInput = document.getElementById("month");
-const yearInput = document.getElementById("year");
+const PASSWORD = {
+    day:16,
+    month:9,
+    year:2024
+};
 
-const chance = document.getElementById("chance");
-const roseMessage = document.getElementById("roseMessage");
-const lockMessage = document.getElementById("lockMessage");
-
-const roseTexts = [
-
-"🌹<br><b>Remember My Proposal  ❤️</b>",
-
-"🌸<br><b>Think about our sweetest memory 💕</b>",
-
-"🌺<br><b>You are getting closer ❤️</b>",
-
-"🌷<br><b>One more chance... Believe in your heart 💖</b>",
-
-"🥀<br><b>Too many wrong memories 💔</b>"
-
+const months = [
+"January","February","March","April","May","June",
+"July","August","September","October","November","December"
 ];
 
-unlockBtn.addEventListener("click",()=>{
+/* Fill Days */
 
-if(locked) return;
+for(let i=1;i<=31;i++){
 
-const d = Number(dayInput.value);
-const m = Number(monthInput.value);
-const y = Number(yearInput.value);
+    let option=document.createElement("option");
 
-if(d===SECRET_DAY && m===SECRET_MONTH && y===SECRET_YEAR){
+    option.value=i;
 
-unlockSuccess();
+    option.text=i;
 
-}else{
-
-wrongPassword();
+    dayPicker.appendChild(option);
 
 }
+
+/* Fill Months */
+
+months.forEach((m,index)=>{
+
+    let option=document.createElement("option");
+
+    option.value=index+1;
+
+    option.text=m;
+
+    monthPicker.appendChild(option);
 
 });
 
-function wrongPassword(){
+/* Fill Years */
+
+for(let y=1900;y<=2100;y++){
+
+    let option=document.createElement("option");
+
+    option.value=y;
+
+    option.text=y;
+
+    yearPicker.appendChild(option);
+
+}
+
+let attempts=5;
+
+let locked=false;
+
+unlockBtn.onclick=function(){
+
+if(locked) return;
+
+const day=Number(dayPicker.value);
+
+const month=Number(monthPicker.value);
+
+const year=Number(yearPicker.value);
+
+if(
+day===PASSWORD.day &&
+month===PASSWORD.month &&
+year===PASSWORD.year
+){
+
+unlockLove();
+
+}else{
+
+wrongDate();
+
+}
+
+};
+
+function wrongDate(){
 
 attempts--;
 
-chance.innerHTML=attempts;
+chanceCount.innerHTML=attempts;
 
-roseMessage.innerHTML=roseTexts[Math.max(0,5-attempts-1)];
+const msgs=[
 
-lockCardShake();
+"🌹 Not this memory... Think about our first kiss ❤️",
 
-createRoseExplosion();
+"🌸 Close your eyes... Remember our special day 💖",
 
-if(attempts<=0){
+"❤️ Love always remembers... Try again.",
 
-startLockTimer();
+"🌷 One last chance...",
 
-}
+"🥀 Too many wrong memories..."
 
-}
+];
 
-function unlockSuccess(){
+roseArea.innerHTML=msgs[5-attempts-1];
 
-roseMessage.innerHTML=
-"🌹<br><h2>Our First Kiss Day ❤️</h2>";
+document.querySelector(".lockContainer").animate([
 
-createHeartExplosion();
+{transform:"translateX(-12px)"},
 
-setTimeout(()=>{
-
-lockScreen.style.transition="1.2s";
-
-lockScreen.style.opacity="0";
-
-setTimeout(()=>{
-
-lockScreen.style.display="none";
-
-},1200);
-
-},2500);
-
-}
-
-function lockCardShake(){
-
-document.querySelector(".lockCard").animate([
-
-{transform:"translateX(-10px)"},
-
-{transform:"translateX(10px)"},
+{transform:"translateX(12px)"},
 
 {transform:"translateX(-8px)"},
 
@@ -651,109 +669,74 @@ duration:450
 
 });
 
-}
+if(attempts<=0){
 
-function createHeartExplosion(){
-
-for(let i=0;i<60;i++){
-
-const heart=document.createElement("div");
-
-heart.innerHTML=Math.random()>0.5?"❤️":"🌸";
-
-heart.className="partyItem";
-
-heart.style.left=Math.random()*100+"vw";
-
-heart.style.top=Math.random()*100+"vh";
-
-heart.style.fontSize=(20+Math.random()*25)+"px";
-
-document.body.appendChild(heart);
-
-setTimeout(()=>heart.remove(),3500);
+startTimer();
 
 }
 
 }
 
-function createRoseExplosion(){
+function unlockLove(){
 
-const rose=document.createElement("div");
+roseArea.innerHTML=`
 
-rose.innerHTML="🌹";
+<h2>🌹 16 September 2024 ❤️</h2>
 
-rose.style.position="fixed";
+<p>The day that became one of the most beautiful memories of our story.</p>
 
-rose.style.left="50%";
-
-rose.style.top="65%";
-
-rose.style.transform="translate(-50%,-50%) scale(.2)";
-
-rose.style.fontSize="40px";
-
-rose.style.zIndex="999999";
-
-rose.style.transition="1s";
-
-document.body.appendChild(rose);
-
-setTimeout(()=>{
-
-rose.style.transform="translate(-50%,-50%) scale(5)";
-
-rose.style.opacity="0";
-
-},50);
-
-setTimeout(()=>rose.remove(),1000);
-
-}
-
-function startLockTimer(){
-
-locked=true;
-
-let sec=60;
+`;
 
 unlockBtn.disabled=true;
 
-const timer=document.createElement("div");
+setTimeout(()=>{
 
-timer.className="lockTimer";
+lockScreen.style.transition="1.5s";
 
-lockMessage.appendChild(timer);
+lockScreen.style.opacity="0";
 
-const x=setInterval(()=>{
+setTimeout(()=>{
 
-timer.innerHTML=
-"⏳ Try Again in <br><b>"+sec+"s</b>";
+lockScreen.style.display="none";
+
+},1500);
+
+},3000);
+
+}
+
+function startTimer(){
+
+locked=true;
+
+unlockBtn.disabled=true;
+
+let sec=60;
+
+const interval=setInterval(()=>{
+
+timerArea.innerHTML="⏳ Try again in "+sec+" seconds";
 
 sec--;
 
 if(sec<0){
 
-clearInterval(x);
+clearInterval(interval);
 
 locked=false;
 
 attempts=5;
 
-chance.innerHTML=5;
+chanceCount.innerHTML=5;
+
+timerArea.innerHTML="";
+
+roseArea.innerHTML="";
 
 unlockBtn.disabled=false;
-
-timer.remove();
-
-roseMessage.innerHTML="";
-
-dayInput.value="";
-monthInput.value="";
-yearInput.value="";
 
 }
 
 },1000);
 
-}
+        }
