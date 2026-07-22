@@ -637,7 +637,7 @@ chanceCount.innerHTML=attempts;
 
 const msgs=[
 
-"🌹 Not this memory... Think about our first kiss ❤️",
+"🌹 Not this memory... Think about our proposal ",
 
 "🌸 Close your eyes... Remember our special day 💖",
 
@@ -696,7 +696,7 @@ text.className="unlockText";
 text.innerHTML=`
 🌹<br>
 16 September 2024 ❤️<br>
-Our First Kiss Day
+Our Proposal day
 `;
 
 document.body.appendChild(text);
@@ -765,3 +765,48 @@ text.remove();
 },5500);
 
            }
+//=====================================
+// HEART LOCK ANIMATION
+//=====================================
+
+function playHeartUnlock(){
+
+const lock=document.createElement("div");
+
+lock.className="heartLock";
+
+lock.innerHTML="💖";
+
+document.body.appendChild(lock);
+
+setTimeout(()=>{
+
+const key=document.createElement("div");
+
+key.className="magicKey";
+
+key.innerHTML="🗝️";
+
+document.body.appendChild(key);
+
+setTimeout(()=>{
+
+const flash=document.createElement("div");
+
+flash.className="unlockFlash";
+
+document.body.appendChild(flash);
+
+setTimeout(()=>{
+
+flash.remove();
+key.remove();
+lock.remove();
+
+},900);
+
+},2800);
+
+},800);
+
+}
