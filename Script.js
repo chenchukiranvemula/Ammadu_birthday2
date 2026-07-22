@@ -64,9 +64,10 @@ nextBtns.forEach(btn => {
         }
 
         chapters[currentChapter].classList.remove("active");
-        if(currentChapter===7){
-    startTyping();
-        }
+        // Start typing when Chapter 8 opens
+if(currentChapter === 7){
+    setTimeout(startLetterTyping,500);
+}
 
         currentChapter++;
 
@@ -154,43 +155,42 @@ if (musicBtn) {
 }
 
 // ================================
-// PREMIUM TYPEWRITER LETTER
+// PREMIUM CHAPTER 8 TYPEWRITER
 // ================================
 
-const letter=document.getElementById("letterText");
+const originalLetter = document.getElementById("letterText")?.innerHTML;
 
-let typed=false;
+function startLetterTyping(){
 
-function startTyping(){
+    const letter = document.getElementById("letterText");
 
-if(!letter || typed) return;
+    if(!letter || !originalLetter) return;
 
-typed=true;
+    letter.innerHTML = "";
 
-const text=letter.innerText;
+    let i = 0;
 
-letter.innerHTML="";
+    function type(){
 
-let i=0;
+        if(i < originalLetter.length){
 
-function type(){
+            letter.innerHTML += originalLetter.charAt(i) + '<span class="cursor">|</span>';
 
-if(i<text.length){
+            i++;
 
-letter.innerHTML+=text.charAt(i)+"<span class='cursor'>|</span>";
+            setTimeout(type,30);
 
-i++;
+        }else{
 
-setTimeout(type,35);
+            letter.innerHTML = originalLetter + '<span class="cursor">|</span>';
+
+        }
+
+    }
+
+    type();
 
 }
-
-}
-
-type();
-
-}
-
 // ================================
 // FLOATING HEARTS
 // ================================
