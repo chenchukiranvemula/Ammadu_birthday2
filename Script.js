@@ -337,3 +337,83 @@ item.remove();
 createFireworks();
 
                       }
+// ================================
+// PREMIUM BACKGROUND EFFECTS
+// ================================
+
+createStars();
+createPetals();
+
+function createStars(){
+
+setInterval(()=>{
+
+const star=document.createElement("div");
+
+star.className="star";
+
+star.style.left=Math.random()*100+"vw";
+star.style.top=Math.random()*100+"vh";
+
+document.body.appendChild(star);
+
+setTimeout(()=>{
+star.remove();
+},3000);
+
+},200);
+
+}
+
+function createPetals(){
+
+setInterval(()=>{
+
+const petal=document.createElement("div");
+
+petal.className="petal";
+
+petal.innerHTML="🌸";
+
+petal.style.left=Math.random()*100+"vw";
+petal.style.fontSize=(18+Math.random()*18)+"px";
+
+document.body.appendChild(petal);
+
+setTimeout(()=>{
+petal.remove();
+},10000);
+
+},800);
+
+}
+
+// Floating "I Love You"
+setInterval(()=>{
+
+const love=document.createElement("div");
+
+love.innerHTML="❤️ I Love You ❤️";
+
+love.style.position="fixed";
+love.style.left=Math.random()*80+"vw";
+love.style.bottom="-40px";
+love.style.color="#ffd6ec";
+love.style.fontWeight="bold";
+love.style.pointerEvents="none";
+love.style.zIndex="999";
+
+love.animate([
+{transform:"translateY(0)",opacity:1},
+{transform:"translateY(-120vh)",opacity:0}
+],{
+duration:6000
+});
+
+document.body.appendChild(love);
+
+setTimeout(()=>{
+love.remove();
+},6000);
+
+},7000);
