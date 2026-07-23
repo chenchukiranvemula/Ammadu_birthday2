@@ -221,7 +221,7 @@ if (musicBtn) {
             // Stop vinyl animation
             if(vinyl) vinyl.classList.remove("spin");
 
-            musicBtn.innerHTML = "▶ Play Our Song";
+            musicBtn.innerHTML = "▶ Play The Song";
 
         }
 
@@ -236,7 +236,7 @@ chapterSong.addEventListener("ended", () => {
 
     bgMusic.play().catch(() => {});
 
-    musicBtn.innerHTML = "▶ Play Our Song ❤️";
+    musicBtn.innerHTML = "▶ Play The Song ❤️";
 
 });
 function startMusicEffects(){
@@ -586,7 +586,7 @@ setInterval(()=>{
 
 const love=document.createElement("div");
 
-love.innerHTML="❤️ I Love You ❤️";
+love.innerHTML="❤️ I Love You ❤️ KODIGUDDU";
 
 love.style.position="fixed";
 love.style.left=Math.random()*80+"vw";
@@ -766,13 +766,13 @@ chanceCount.innerHTML=attempts;
 
 const msgs=[
 
-"🌹 Not this memory... Think about our proposal ",
+"🌹 Not this memory...  ",
 
 "🌸 Close your eyes... Remember our special day 💖",
 
 "❤️ Love always remembers... Try again.",
 
-"🌷 One last chance...",
+"🌷 One last chance...Think aboutour proposal",
 
 "🥀 Too many wrong memories..."
 
