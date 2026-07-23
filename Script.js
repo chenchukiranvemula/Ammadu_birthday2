@@ -803,7 +803,38 @@ if (attempts <= 0) {
 }
     
 }
-    
+function startTimer() {
+
+    unlockBtn.disabled = true;
+
+    let timeLeft = 60;
+
+    timerArea.innerHTML = "Try again in " + timeLeft + " seconds";
+
+    const timer = setInterval(() => {
+
+        timeLeft--;
+
+        timerArea.innerHTML = "Try again in " + timeLeft + " seconds";
+
+        if (timeLeft <= 0) {
+
+            clearInterval(timer);
+
+            attempts = 5;
+            chanceCount.innerHTML = attempts;
+
+            unlockBtn.disabled = false;
+
+            timerArea.innerHTML = "";
+
+            roseArea.innerHTML = "";
+
+        }
+
+    }, 1000);
+
+}
 function unlockLove(){
     
     playHeartUnlock();
