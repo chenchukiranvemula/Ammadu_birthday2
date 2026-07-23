@@ -798,9 +798,8 @@ duration:450
 
 });
 
-if(attempts<=0){
-    unlockBtn.disabled = true;
-    timerArea.innerHTML = "Too many attempts. Refresh the page to try again.";
+if (attempts <= 0) {
+    startTimer();
 }
     
 }
