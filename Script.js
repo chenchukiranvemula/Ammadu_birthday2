@@ -54,7 +54,6 @@ nextBtns.forEach(btn => {
 
     btn.addEventListener("click", () => {
 
-        // Leaving Chapter 9 (special song)
         if(currentChapter === 8){
             chapterSong.pause();
             chapterSong.currentTime = 0;
@@ -71,21 +70,13 @@ nextBtns.forEach(btn => {
         }
 
         chapters[currentChapter].classList.add("active");
-        
 
-        // Entering Chapter 8
-        if(currentChapter === 7){
-            setTimeout(startLetterTyping,500);
-        }
-
-        // Entering Chapter 10
+        // Chapter 10 Celebration
         if(currentChapter === 9){
             startCelebration();
+        }else{
+            stopCelebration();
         }
-        // Leaving Chapter 10
-if (currentChapter === 9) {
-    stopCelebration();
-}
 
     });
 
