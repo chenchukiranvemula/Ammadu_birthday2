@@ -389,8 +389,6 @@ function createHeart(){
 // FLOATING HEARTS
 // ================================
 
-function startHearts(){
-
 let heartInterval;
 
 function startHearts(){
@@ -802,6 +800,8 @@ duration:450
 if(attempts<=0){
     unlockBtn.disabled = true;
     timerArea.innerHTML = "Too many attempts. Refresh the page to try again.";
+  }
+    
 }
     
 function unlockLove(){
