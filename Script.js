@@ -391,8 +391,6 @@ function createHeart(){
 
 function startHearts(){
 
-setInterval(()=>{
-
 let heartInterval;
 
 function startHearts(){
@@ -401,15 +399,13 @@ function startHearts(){
 
     heartInterval = setInterval(()=>{
 
-        const heart=document.createElement("div");
+        const heart = document.createElement("div");
 
-        heart.className="heart";
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
 
-        heart.innerHTML="❤️";
-
-        heart.style.left=Math.random()*100+"vw";
-
-        heart.style.fontSize=(18+Math.random()*25)+"px";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (18 + Math.random() * 25) + "px";
 
         document.body.appendChild(heart);
 
@@ -420,7 +416,6 @@ function startHearts(){
     },500);
 
 }
-
 // ================================
 // FIREWORKS
 // ================================
@@ -805,13 +800,10 @@ duration:450
 });
 
 if(attempts<=0){
-
-startTimer();
-
+    unlockBtn.disabled = true;
+    timerArea.innerHTML = "Too many attempts. Refresh the page to try again.";
 }
-
-}
-
+    
 function unlockLove(){
     
     playHeartUnlock();
