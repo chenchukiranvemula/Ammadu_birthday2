@@ -421,6 +421,7 @@ function startHearts(){
 function createFireworks(){
 
 const area=document.getElementById("fireworks");
+    if(!area)return;
 
 for(let i=0;i<70;i++){
 
@@ -883,14 +884,15 @@ lockScreen.style.opacity="0";
 
 setTimeout(()=>{
 
-lockScreen.style.display="none";
+    lockScreen.style.display = "none";
 
-rose.remove();
+    welcome.style.display = "flex";
+    website.style.display = "none";
 
-text.remove();
+    rose.remove();
+    text.remove();
 
 },2000);
-
 },5500);
 
            }
