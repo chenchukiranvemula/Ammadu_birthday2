@@ -393,25 +393,31 @@ function startHearts(){
 
 setInterval(()=>{
 
-const heart=document.createElement("div");
+let heartInterval;
 
-heart.className="heart";
+function startHearts(){
 
-heart.innerHTML="❤️";
+    clearInterval(heartInterval);
 
-heart.style.left=Math.random()*100+"vw";
+    heartInterval = setInterval(()=>{
 
-heart.style.fontSize=(18+Math.random()*25)+"px";
+        const heart=document.createElement("div");
 
-document.body.appendChild(heart);
+        heart.className="heart";
 
-setTimeout(()=>{
+        heart.innerHTML="❤️";
 
-heart.remove();
+        heart.style.left=Math.random()*100+"vw";
 
-},6000);
+        heart.style.fontSize=(18+Math.random()*25)+"px";
 
-},500);
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{
+            heart.remove();
+        },6000);
+
+    },500);
 
 }
 
