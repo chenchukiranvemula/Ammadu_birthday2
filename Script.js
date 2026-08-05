@@ -58,7 +58,7 @@ nextBtns.forEach(btn => {
             chapterSong.pause();
             chapterSong.currentTime = 0;
             bgMusic.play().catch(() => {});
-            musicBtn.innerHTML = "▶ Play Our Song";
+            musicBtn.innerHTML = "▶ Play The Song";
         }
 
         chapters[currentChapter].classList.remove("active");
