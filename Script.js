@@ -768,11 +768,11 @@ const msgs=[
 
 "🌹 Not this memory...  ",
 
-"🌸 Close your eyes... Remember our special day 💖",
+"🌸 Close your eyes... Remember any special date 💖",
 
 "❤️ Love always remembers... Try again.",
 
-"🌷 One last chance...Think aboutour proposal",
+"🌷 One last chance...Think about our proposal",
 
 "🥀 Too many wrong memories..."
 
