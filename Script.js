@@ -1053,3 +1053,317 @@ navigator.vibrate([100,80,100]);
 }
 
    }
+/* =====================================================
+   CHAPTER 5 - INFINITE MEMORY GALLERY
+===================================================== */
+
+/*
+   ADD AS MANY PHOTOS AS YOU WANT HERE ❤️
+
+   Example:
+
+   Madhu1.jpg
+   Madhu2.jpg
+   Madhu3.jpg
+   ...
+   Madhu100.jpg
+   Madhu101.jpg
+
+*/
+
+const memoryPhotos = [
+
+    {
+        src: "Madhu1.jpg",
+        caption: "ur my heart ❤️"
+    },
+
+    {
+        src: "Madhu2.jpg",
+        caption: "ur smile makes my day brighter ❤️"
+    },
+
+    {
+        src: "Madhu3.jpg",
+        caption: "ur my favorite ❤️"
+    },
+
+    {
+        src: "Madhu4.jpg",
+        caption: "Another beautiful memory ❤️"
+    },
+
+    {
+        src: "Madhu5.jpg",
+        caption: "Forever special ❤️"
+    },
+
+    {
+        src: "Madhu6.jpg",
+        caption: "A moment I will never forget ❤️"
+    }
+
+    // Keep adding photos here...
+    //
+    // {
+    //     src: "Madhu7.jpg",
+    //     caption: "Our beautiful memory ❤️"
+    // },
+
+];
+
+
+const memoryGallery =
+    document.getElementById("memoryGallery");
+
+
+/* CREATE ALL PHOTOS */
+
+if (memoryGallery) {
+
+    memoryGallery.innerHTML = memoryPhotos.map((photo, index) => {
+
+        return `
+            <div class="memoryItem" data-index="${index}">
+
+                <img
+                    src="${photo.src}"
+                    alt="Memory ${index + 1}"
+                    loading="lazy"
+                >
+
+                <div class="memoryCaption">
+                    ${photo.caption}
+                </div>
+
+                <div class="memoryHeart">
+                    ❤️
+                </div>
+
+            </div>
+        `;
+
+    }).join("");
+
+}
+
+
+/* =====================================================
+   FULLSCREEN PHOTO VIEWER
+===================================================== */
+
+const memoryViewer =
+    document.getElementById("memoryViewer");
+
+const viewerImage =
+    document.getElementById("viewerImage");
+
+const viewerCaption =
+    document.getElementById("viewerCaption");
+
+const viewerCount =
+    document.getElementById("viewerCount");
+
+const viewerClose =
+    document.getElementById("viewerClose");
+
+const viewerPrev =
+    document.getElementById("viewerPrev");
+
+const viewerNext =
+    document.getElementById("viewerNext");
+
+
+let currentMemory = 0;
+
+
+function showMemory(index) {
+
+    if (!memoryPhotos.length) return;
+
+    currentMemory =
+        (index + memoryPhotos.length)
+        % memoryPhotos.length;
+
+    const photo =
+        memoryPhotos[currentMemory];
+
+    viewerImage.src = photo.src;
+
+    viewerCaption.textContent =
+        photo.caption;
+
+    viewerCount.textContent =
+        `${currentMemory + 1} / ${memoryPhotos.length}`;
+
+}
+
+
+/* OPEN PHOTO */
+
+if (memoryGallery) {
+
+    memoryGallery.addEventListener("click", function(event) {
+
+        const item =
+            event.target.closest(".memoryItem");
+
+        if (!item) return;
+
+        currentMemory =
+            Number(item.dataset.index);
+
+        showMemory(currentMemory);
+
+        memoryViewer.classList.add("active");
+
+        document.body.style.overflow = "hidden";
+
+    });
+
+}
+
+
+/* CLOSE */
+
+if (viewerClose) {
+
+    viewerClose.addEventListener("click", function() {
+
+        memoryViewer.classList.remove("active");
+
+        document.body.style.overflow = "";
+
+    });
+
+}
+
+
+/* PREVIOUS */
+
+if (viewerPrev) {
+
+    viewerPrev.addEventListener("click", function() {
+
+        showMemory(currentMemory - 1);
+
+    });
+
+}
+
+
+/* NEXT */
+
+if (viewerNext) {
+
+    viewerNext.addEventListener("click", function() {
+
+        showMemory(currentMemory + 1);
+
+    });
+
+}
+
+
+/* CLICK OUTSIDE IMAGE TO CLOSE */
+
+if (memoryViewer) {
+
+    memoryViewer.addEventListener("click", function(event) {
+
+        if (event.target === memoryViewer) {
+
+            memoryViewer.classList.remove("active");
+
+            document.body.style.overflow = "";
+
+        }
+
+    });
+
+}
+
+
+/* KEYBOARD */
+
+document.addEventListener("keydown", function(event) {
+
+    if (!memoryViewer.classList.contains("active")) {
+        return;
+    }
+
+    if (event.key === "Escape") {
+
+        memoryViewer.classList.remove("active");
+
+        document.body.style.overflow = "";
+
+    }
+
+    if (event.key === "ArrowLeft") {
+
+        showMemory(currentMemory - 1);
+
+    }
+
+    if (event.key === "ArrowRight") {
+
+        showMemory(currentMemory + 1);
+
+    }
+
+});
+
+
+/* =====================================================
+   MOBILE SWIPE
+===================================================== */
+
+let memoryTouchStartX = 0;
+
+
+if (memoryViewer) {
+
+    memoryViewer.addEventListener(
+        "touchstart",
+        function(event) {
+
+            memoryTouchStartX =
+                event.changedTouches[0].screenX;
+
+        },
+        { passive: true }
+    );
+
+
+    memoryViewer.addEventListener(
+        "touchend",
+        function(event) {
+
+            const touchEndX =
+                event.changedTouches[0].screenX;
+
+            const difference =
+                touchEndX - memoryTouchStartX;
+
+
+            if (Math.abs(difference) < 50) {
+                return;
+            }
+
+
+            if (difference < 0) {
+
+                showMemory(currentMemory + 1);
+
+            } else {
+
+                showMemory(currentMemory - 1);
+
+            }
+
+        },
+        { passive: true }
+    );
+
+}
